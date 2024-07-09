@@ -1,0 +1,37 @@
+<div
+    class='cursor-pointer w-[283.3px] relative flex-shrink-0 hover:scale-95 transition-transform duration-300 ease-in-out'>
+    <div class='w-full'>
+        <img [src]="CLOUDINARY_CDN_URL + topRestaurant?.info?.cloudinaryImageId" alt='topRestaurant'
+            class='w-full h-[182px] object-cover rounded-2xl shadow-lg' />
+    </div>
+    <div class="absolute w-full" style="top:  2px">
+        <div
+            class='bg-gradient-to-t from-black via-transparent to-transparent h-[180px] px-2 py-1 rounded-b-2xl flex items-end'>
+            <h1 class='font-extrabold text-xl px-2 py-1 text-white'>
+                {{ topRestaurant?.info?.aggregatedDiscountInfoV3?.discountTag}}
+            </h1>
+        </div>
+    </div>
+    <div class='ml-3 mt-3'>
+        <h1 class='font-bold leading-snug'>
+            {{topRestaurant?.info?.name?.length > 30
+            ? topRestaurant?.info?.name.substring(0, 29) + '..'
+            : topRestaurant?.info?.name}}
+        </h1>
+        <div class='flex items-center'>
+            <!-- <MdStars color='green' size={20} /> -->
+            <h3 class='font-semibold text-base leading-snug ml-1'>
+                {{topRestaurant?.info?.avgRating || topRestaurant?.info?.avgRatingString}} ·{{' '}}
+                {{topRestaurant?.info?.sla?.slaString}}
+            </h3>
+        </div>
+        <p class='text-gray-500 font-light text-base leading-snug'>
+            {{topRestaurant?.info?.cuisines?.length >= 3
+            ? topRestaurant?.info?.cuisines?.slice(0, 3).join(', ') + '..'
+            : topRestaurant?.info?.cuisines}}
+        </p>
+        <p class='text-gray-500 font-light text-base leading-snug'>
+            {{topRestaurant?.info?.areaName}}
+        </p>
+    </div>
+</div>

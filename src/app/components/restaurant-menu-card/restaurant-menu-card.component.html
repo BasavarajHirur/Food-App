@@ -1,0 +1,37 @@
+<div
+    class='cursor-pointer h-[264px] w-[244px] relative flex-shrink-0 hover:scale-95 transition-transform duration-300 ease-in-out'>
+    <div class='w-full'>
+        <img [src]="CLOUDINARY_CDN_URL + restauants?.info?.cloudinaryImageId" alt='restaurant'
+            class='w-full h-[162.66px] object-cover rounded-2xl shadow-lg' />
+    </div>
+    <div class="absolute w-full" style="top:-17px">
+        <div
+            class='bg-gradient-to-t from-black via-transparent to-transparent h-[180px] px-2 py-1 rounded-b-2xl flex items-end'>
+            <h1 class='font-extrabold text-lg px-2 py-1 text-white'>
+                {{restauants?.info?.aggregatedDiscountInfoV3?.header}}
+            </h1>
+        </div>
+    </div>
+    <div class='ml-3 mt-3'>
+        <h1 class='font-bold leading-snug'>
+            {{restauants?.info?.name?.length > 25
+            ? restauants?.info?.name.substring(0, 26) + '..'
+            : restauants?.info?.name}}
+        </h1>
+        <div class='flex items-center'>
+            <!-- <MdStars color='green' size={20} /> -->
+            <h3 class='font-semibold text-base leading-snug ml-1'>
+                {{restauants?.info?.avgRating || restauants?.info?.avgRatingString}} ·{{' '}}
+                {{restauants?.info?.sla?.slaString}}
+            </h3>
+        </div>
+        <p class='text-gray-500 text-sm font-light leading-snug'>
+            {{restauants?.info?.cuisines?.length >= 3
+            ? restauants?.info?.cuisines?.slice(0, 3).join(', ') + '..'
+            : restauants?.info?.cuisines}}
+        </p>
+        <p class='text-gray-500 text-sm font-light leading-snug'>
+            {{restauants?.info?.areaName}}
+        </p>
+    </div>
+</div>

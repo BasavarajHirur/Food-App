@@ -1,0 +1,15 @@
+<div class='w-3/4 mx-auto relative z-0 top-20 mb-32'>
+    <div class='flex justify-between p-4'>
+        <h1 class='font-bold text-2xl'>What's on your mind? 🤔</h1>
+    </div>
+
+    <div class='overflow-x-auto hide-scrollbar container-carousel'>
+        <div class='flex gap-3 transition-transform duration-500' style='transform: translateX(-0.1%)'>
+            <ng-container *ngFor="let item of menuCards">
+                <div class='flex-shrink-0 cursor-pointer'>
+                    <img [src]="WHAT_IS_IN_YOUR_MIND + item.imageId" alt='food' class='w-36 h-44' />
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

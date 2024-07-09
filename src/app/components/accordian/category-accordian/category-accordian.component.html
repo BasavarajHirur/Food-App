@@ -1,0 +1,14 @@
+<div>
+    <div class='py-4 px-3 border-gray-100 border-b-[14px]'>
+        <div class='flex justify-between text-lg font-extrabold cursor-pointer' (click)="setShow()">
+            <span>
+                {{accordianCategory?.title}} ({{accordianCategory.itemCards?.length}})
+            </span>
+            <span class='flex justify-center items-center mr-4'>
+                <i *ngIf="show" class="fa-solid fa-chevron-up"></i>
+                <i *ngIf="!show" class="fa-solid fa-chevron-down"></i>
+            </span>
+        </div>
+        <app-accordian-list *ngIf="show" [accordianList]="accordianCategory?.itemCards" />
+    </div>
+</div>

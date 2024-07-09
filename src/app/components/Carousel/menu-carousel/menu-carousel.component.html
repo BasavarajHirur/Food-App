@@ -1,0 +1,9 @@
+<div class='flex-shrink-0 flex gap-2 pb-8'>
+    <ng-container *ngFor="let c of carousel.carousel">
+        <span>
+            <div class='h-[302px] w-[294px] border rounded-2xl '>
+                <img [src]="CLOUDINARY_TOP_PICKS_URL + c?.creativeId" alt='top picks' />
+            </div>
+        </span>
+    </ng-container>
+</div>

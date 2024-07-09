@@ -1,0 +1,22 @@
+<div>
+    <div class='py-4 px-3 border-gray-100 border-b-[14px]'>
+        <div class='flex justify-between text-lg font-extrabold cursor-pointer mb-2'>
+            <span>
+                {{nestedCategory?.card?.card?.title}} ({{nestedCategory?.card?.card?.categories?.length}})
+            </span>
+        </div>
+
+        <ng-container *ngFor="let list of nestedCategory.card?.card?.categories; let i=index">
+            <div class='flex flex-col'>
+                <span (click)="toggleAccordian(i)" class='py-4 border-b flex justify-between cursor-pointer'>
+                    <span class='font-semibold'>{{list?.title}}</span>
+                    <span class='flex justify-center items-center mr-4'>
+                        <i *ngIf="selectedList === i" class="fa-solid fa-chevron-up"></i>
+                        <i *ngIf="selectedList !== i" class="fa-solid fa-chevron-down"></i>
+                    </span>
+                </span>
+                <app-accordian-list *ngIf="selectedList === i" [accordianList]="list?.itemCards" />
+            </div>
+        </ng-container>
+    </div>
+</div>
