@@ -3,7 +3,7 @@ import { InitialState } from "./common.reducers";
 
 const selectState = createFeatureSelector<InitialState>('data');
 
-export const selectData = createSelector(
+export const selectUserData = createSelector(
     selectState,
-    (state: InitialState) => state.data
+    (state: InitialState) => state.userData
 )

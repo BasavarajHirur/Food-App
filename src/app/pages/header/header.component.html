@@ -1,0 +1,27 @@
+<div class='flex fixed z-10 w-full justify-between py-4 boxShadow bg-white'>
+    <a routerLink='/' class='flex justify-center items-center mx-32'>
+        <!-- <SiSwiggy size={49}
+        class='text-orange-500 hover:scale-110 cursor-pointer transition-transform duration-300 ease-in-out' /> -->
+    </a>
+    <div class='flex items-center gap-12 mx-32'>
+        <span class='font-bold text-orange-500'>{{'Basavaraja Hiruru'}}</span>
+        <span class='hover:text-orange-500'>
+            {{onlineStatus ? '🟢 Online ' : '🔴 Offline'}}
+        </span>
+        <a routerLink='/search' class='hover:text-orange-500'>
+            Search
+        </a>
+        <a routerLink='/about' class='hover:text-orange-500'>
+            About
+        </a>
+        <a routerLink='/contact' class='hover:text-orange-500'>
+            Contact
+        </a>
+        <a routerLink='/cart' class='hover:text-orange-500'>
+            <span class='bg-orange-500 text-white px-[8px] py-0.5 rounded-md text-sm font-bold'>
+                {{cart.length}}
+            </span>{{''}}
+            Cart
+        </a>
+    </div>
+</div>

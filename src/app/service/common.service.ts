@@ -10,7 +10,7 @@ import { Observable } from "rxjs";
 export class CommonService {
     constructor(private http: HttpClient) { }
 
-    getData(): Observable<any> {
-        return this.http.get('');
+    fetchUserData(): Observable<any> {
+        return this.http.get('https://api.github.com/users/BasavarajHirur')
     }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
-import { failed_data, Get_data, Store_data } from "./common.actions";
+import { failed_data, Get_User_data, Store_User_data } from "./common.actions";
 import { catchError, map, of, switchMap } from "rxjs";
 import { CommonService } from "../service/common.service";
 
@@ -11,9 +11,9 @@ export class CommonEffect {
 
     public getData$ = createEffect(() => {
         return this.actions$.pipe(
-            ofType(Store_data),
-            switchMap(() => this.service.getData().pipe(
-                map((data) => Get_data({ data })),
+            ofType(Store_User_data),
+            switchMap(() => this.service.fetchUserData().pipe(
+                map((userData) => Get_User_data({ userData })),
                 catchError((error) => of(failed_data({ error })))
             )
             )

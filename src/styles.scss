@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+.boxShadow {
+    box-shadow: 0 15px 40px -20px rgba(40, 44, 63, 0.15);
+}
+
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.inn-shadow {
+    background: linear-gradient(rgb(255, 255, 255) -6.71%,
+            rgb(235, 235, 242) 56.19%,
+            rgb(223, 223, 231) 106.56%);
+    padding: 0px 20px 20px;
+    border-bottom-left-radius: 36px;
+    border-bottom-right-radius: 36px;
+}
