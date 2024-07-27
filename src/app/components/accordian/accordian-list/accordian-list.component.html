@@ -3,11 +3,8 @@
         <div class='w-3/4'>
             <h4 class='flex gap-1'>
                 <span>
-                    <!-- {{list?.card?.info?.isVeg == 1 ? (
-                    <PiSquareLogoFill size={{20}} color='green' />
-                    ) : (
-                    <PiSquareLogoFill size={{20}} color='red' />
-                    )}} -->
+                    <i *ngIf="list?.card?.info?.isVeg !== 1" class="fa-regular fa-square-heart" style="color:red"></i>
+                    <i *ngIf="list?.card?.info?.isVeg === 1" class="fa-regular fa-square-heart" style="color:green"></i>
                 </span>
                 <span class='text-orange-600 text-sm font-medium'>
                     {{list?.card?.info?.isBestseller && '🌟 Bestseller'}}
@@ -23,9 +20,7 @@
             <p *ngIf="list?.card?.info?.ratings?.aggregatedRating?.rating > 0"
                 class='flex items-center gap-1 text-sm text-gray-500'>
                 <span class='text-green-700 flex items-center gap-1'>
-                    <span>
-                        <!-- <IoStar color='green' /> -->
-                    </span>
+                    <span style="color:green">★</span>
                     <span>
                         {{list?.card?.info?.ratings?.aggregatedRating?.rating || null}}
                     </span>
@@ -44,15 +39,10 @@
             <img [src]="list?.card?.info?.imageId==undefined ? MEME_2 : CLOUDINARY_CDN_URL + list?.card?.info?.imageId"
                 alt='dish' class='h-[130px] object-cover w-full shadow rounded-2xl border' />
             <div class='flex flex-col justify-center items-center absolute top-[6.6rem] left-[1.1rem]'>
-                <!-- <button onClick={{()=> {{
-                    handleAddItem(list);
-                    toast.success(`${{list?.card?.info?.name}} added to cart`);
-                    }}}}
-                    class='bg-white hover:bg-gray-200 text-green-600 font-bold text-lg border mx-auto py-1 px-10
-                    rounded-lg shadow-md'
-                    >
+                <button (click)="addToCart(list)" class='bg-white hover:bg-gray-200 text-green-600 font-bold text-lg border mx-auto py-1 px-10
+                    rounded-lg shadow-md'>
                     ADD
-                </button> -->
+                </button>
                 <p class='text-xs font-light text-gray-500'>
                     {{list?.card?.info?.addons?.length > 0 ? 'Customisable' : ''}}
                 </p>

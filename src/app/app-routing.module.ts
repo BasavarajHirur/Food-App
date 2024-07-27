@@ -4,7 +4,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { SearchComponent } from './pages/search/search.component';
-import { RestaurantMenuDetailsComponent } from './components/restaurant-menu-details/restaurant-menu-details.component';
+import { RestaurantMenuDetailsComponent } from './components/restaurant/restaurant-menu-details/restaurant-menu-details.component';
 import { AppComponent } from './app.component';
 
 const routes: Route[] = [

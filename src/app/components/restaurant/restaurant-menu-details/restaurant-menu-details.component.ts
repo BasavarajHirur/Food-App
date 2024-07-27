@@ -21,9 +21,9 @@ export class RestaurantMenuDetailsComponent implements OnInit {
   constructor(private router: ActivatedRoute, private store: Store) { }
 
   ngOnInit(): void {
-    const Id = this.router.params.subscribe(
-      res => {
-        const Id = res['Id'];
+    this.router.paramMap.subscribe(
+      (res: any) => {
+        const Id = res.params['Id'];
         this.store.dispatch(Set_Restaurant_Id({ Id }));
         this.getRestaurantDetails();
         this.getOfferDetails();
@@ -31,7 +31,7 @@ export class RestaurantMenuDetailsComponent implements OnInit {
         this.getItemCategory();
         this.getNestedItemCategory();
       }
-    );
+    )
   }
 
   getRestaurantDetails() {

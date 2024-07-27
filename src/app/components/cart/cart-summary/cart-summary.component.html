@@ -1,0 +1,56 @@
+<div class='w-[500px] fixed z-30 bg-white bottom-0 overflow-y-scroll'>
+    <div (click)="toggleShow()" class='border-b bg-orange-200 px-4 py-6 flex justify-between cursor-pointer'>
+        <h2 class='font-bold text-2xl'>
+            {{' '}}
+            Your Bill - ₹{{' '}}
+            <span class='line-through font-medium mr-3'>
+                {{calculateGrandTotal(cartItem).toFixed(2)}}
+            </span>
+            {{(calculateGrandTotal(cartItem) - calculateGrandTotal(cartItem) * 0.1).toFixed(2)}}
+        </h2>
+        <span class='flex justify-center items-center mr-4'>
+            <i *ngIf="show" class="fa-solid fa-angle-up"></i>
+            <i *ngIf="!show" class="fa-solid fa-angle-down"></i>
+        </span>
+    </div>
+    <div class='flex flex-col gap-2 py-4 h-[300px] overflow-y-scroll' *ngIf="show">
+        <div class='flex justify-between text-lg px-4 font-bold'>
+            <span>Item Name</span>
+            <span>Item Price</span>
+        </div>
+        <div class='flex flex-col justify-between px-4'>
+            <div *ngFor="let item cartItem" class='flex justify-between text-base'>
+                <h3>
+                    {{item?.quantity}} X{{' '}}
+                    {{item?.card?.info?.name?.length > 33 ? item?.card?.info?.name?.slice(0, 35) + '..' :
+                    item?.card?.info?.name}}
+                </h3>
+                <p>
+                    ₹
+                    {{parseFloat(item)}}{{' '}}
+                </p>
+            </div>
+        </div>
+        <div class='flex justify-between border-t pt-2 mt-2 px-4 font-semibold'>
+            <span>Grand Total</span>
+            <span>₹{{calculateGrandTotal(cartItem).toFixed(2)}}</span>
+        </div>
+        <div class='flex justify-between px-4 font-semibold'>
+            <span>Discount (FLAT 10% OFF)</span>
+            <span>- ₹ {{(calculateGrandTotal(cartItem) * 0.1).toFixed(2)}}</span>
+        </div>
+        <div class='flex justify-between px-4 font-semibold mb-20'>
+            <span>Delivery Charge</span>{{' '}}
+            <span class='text-white bg-green-600 px-2 rounded-md'>
+                FREE
+            </span>
+        </div>
+        <div
+            class='bg-green-100 fixed bottom-0 w-[500px] px-4 flex justify-between font-extrabold text-2xl border-t  pt-4 pb-6'>
+            <span>TO PAY</span>
+            <span>
+                ₹{{(calculateGrandTotal(cartItem) - calculateGrandTotal(cartItem) * 0.1).toFixed(2)}}{{' '}}
+            </span>
+        </div>
+    </div>
+</div>

@@ -4,6 +4,7 @@
 @tailwind utilities;
 
 @import "~@fortawesome/fontawesome-free/css/all.css";
+@import 'ngx-toastr/toastr';
 
 .boxShadow {
     box-shadow: 0 15px 40px -20px rgba(40, 44, 63, 0.15);

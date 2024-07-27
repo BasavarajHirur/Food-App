@@ -1,16 +1,21 @@
-<div class='w-3/4 mx-auto'>
-    <div class='flex justify-between p-4'>
-        <h1 class='font-bold text-2xl'>
-            Top restaurant chains in Bangalore
-        </h1>
-    </div>
-    <div class='overflow-x-auto hide-scrollbar container-carousel'>
-        <div class='flex gap-8 pl-4 transition-transform duration-500' style="transform: translateX(-0.1%)">
-            <ng-container *ngFor="let restaurant of topRestaurants">
-                <a [routerLink]="['/restaurants', restaurant?.info?.id]">
-                    <app-top-restaurant [topRestaurant]="restaurant" top="2"></app-top-restaurant>
-                </a>
-            </ng-container>
+<ng-container *ngIf="!topRestaurants.length; else elseBlock">
+    <app-top-restaurant-shimmer></app-top-restaurant-shimmer>
+</ng-container>
+<ng-template #elseBlock>
+    <div class='w-3/4 mx-auto'>
+        <div class='flex justify-between p-4'>
+            <h1 class='font-bold text-2xl'>
+                Top restaurant chains in Bangalore
+            </h1>
+        </div>
+        <div class='overflow-x-auto hide-scrollbar container-carousel'>
+            <div class='flex gap-8 pl-4 transition-transform duration-500' style="transform: translateX(-0.1%)">
+                <ng-container *ngFor="let restaurant of topRestaurants">
+                    <a [routerLink]="['/restaurants', restaurant?.info?.id]">
+                        <app-top-restaurant [topRestaurant]="restaurant" top="2"></app-top-restaurant>
+                    </a>
+                </ng-container>
+            </div>
         </div>
     </div>
-</div>
+</ng-template>

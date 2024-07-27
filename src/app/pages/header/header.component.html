@@ -1,7 +1,8 @@
 <div class='flex fixed z-10 w-full justify-between py-4 boxShadow bg-white'>
     <a routerLink='/' class='flex justify-center items-center mx-32'>
-        <!-- <SiSwiggy size={49}
-        class='text-orange-500 hover:scale-110 cursor-pointer transition-transform duration-300 ease-in-out' /> -->
+        <img src="/assets/img/Swiggy1.png"
+            class='text-orange-500 hover:scale-110 cursor-pointer transition-transform duration-300 ease-in-out'
+            alt="swiggy-logo" loading="lazy">
     </a>
     <div class='flex items-center gap-12 mx-32'>
         <span class='font-bold text-orange-500'>{{'Basavaraja Hiruru'}}</span>
@@ -17,11 +18,17 @@
         <a routerLink='/contact' class='hover:text-orange-500'>
             Contact
         </a>
-        <a routerLink='/cart' class='hover:text-orange-500'>
+        <span class='flex gap-1 cursor-pointer w-[51px] hover:text-orange-500' (click)="handleShowCart()">
             <span class='bg-orange-500 text-white px-[8px] py-0.5 rounded-md text-sm font-bold'>
                 {{cart.length}}
-            </span>{{''}}
-            Cart
-        </a>
+            </span>{{' '}}
+            <span> Cart</span>
+        </span>
+        <span class='cursor-pointer w-[51px] hover:text-orange-500' (click)="toggle != toggle">
+            {{toggle ? 'Login' : 'Logout'}}
+        </span>
+        <div *ngIf="viewCart" class='fixed border h-screen bg-white top-0 right-0 z-50'>
+            <app-cart></app-cart>
+        </div>
     </div>
 </div>

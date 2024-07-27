@@ -1,0 +1,36 @@
+<ng-container *ngIf="!listOfRestaurants.length ;else elseBlock">
+    <app-restaurant-menu-shimmer />
+</ng-container>
+<ng-template #elseBlock>
+    <div class='w-3/4 mx-auto'>
+        <div class='flex justify-between p-4'>
+            <h1 class='font-bold text-2xl'>
+                Restaurants with online food delivery in Bangalore
+            </h1>
+        </div>
+        <div class='w-full flex items-center gap-4 flex-col mb-10 mt-3'>
+            <div class=''>
+                <button (click)="topRated()" class='border py-2 px-4 rounded bg-'>
+                    TOP RATED RESTO
+                </button>
+            </div>
+            <div class='w-full flex justify-center items-center'>
+                <input #filter type='text' placeholder='Search for restaurants and foods'
+                    class=' w-3/4 px-3 py-2 outline-none border-l border-y rounded-s' />
+                <button (click)=filterRestaurants(filter.value) class='px-5 py-[7.3px] border-r border-y rounded-e'>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+        </div>
+        <div class='flex gap-8 justify-center flex-wrap'>
+            <ng-container *ngFor="let list of listOfRestaurants">
+                <a [routerLink]="'/restaurants/'+ list?.info?.id">
+                    <app-restaurant-menu-card [restauants]='list'></app-restaurant-menu-card>
+                </a>
+            </ng-container>
+        </div>
+        <div className='flex justify-center items-center' *ngIf="!listOfRestaurants">
+            <span className='px-4 py-2 text-lg font-semibold'>{{'No match found for'}} {{filter.value}}</span>
+        </div>
+    </div>
+</ng-template>

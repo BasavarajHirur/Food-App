@@ -1,37 +1,42 @@
-<div class='w-3/4 mx-auto relative z-0 top-20'>
-    <div class='flex justify-between p-4'>
-        <h1 class='font-bold text-2xl'>About</h1>
-    </div>
-    <div class='flex flex-col gap-4'>
-        <div class='py-12'>
-            <div class='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
-                <div class='flex flex-col items-center justify-center'>
-                    <div class='mb-8'>
-                        <img [src]='userData?.avatar_url' [alt]='userData?.name'
-                            class='rounded-full h-40 w-40 object-cover shadow-xl' />
-                    </div>
-                    <div class='text-center'>
-                        <p class='text-lg text-gray-600'>{{userData?.location}} 🇮🇳</p>
-                        <h1 class='text-3xl p-3 font-bold text-gray-800'>
-                            {{userData?.name}}
-                        </h1>
-                        <a href='https://github.com/BasavarajHirur' target='_blank'
-                            class='text-lg text-gray-600 flex justify-center items-center p-1 gap-2'>
-                            <i class="fa-brands fa-github"></i>@{{userData?.login}}
-                        </a>
-                        <a href='https://twitter.com/BasavarajHirur' target='_blank'
-                            class='text-lg text-gray-600 flex justify-center items-center p-1 gap-2'>
-                            <i class="fa-brands fa-twitter text-blue-400"></i>
-                            @{{userData?.twitter_username}}
-                        </a>
-                        <a href='https://www.linkedin.com/in/BasavarajaHiruru/'
-                            class='text-lg text-gray-600 flex justify-center items-center p-1 gap-2'>
-                            <i class="fa-brands fa-linkedin text-blue-600"></i>
-                            @BasavarajaHiruru
-                        </a>
+<div class="w-3/4 mx-auto relative z-0 top-20" *ngIf="!userData; else elseBlock">
+    <app-about-shimmer></app-about-shimmer>
+</div>
+<ng-template #elseBlock>
+    <div class='w-3/4 mx-auto relative z-0 top-20'>
+        <div class='flex justify-between p-4'>
+            <h1 class='font-bold text-2xl'>About</h1>
+        </div>
+        <div class='flex flex-col gap-4'>
+            <div class='py-12'>
+                <div class='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8'>
+                    <div class='flex flex-col items-center justify-center'>
+                        <div class='mb-8'>
+                            <img [src]='userData?.avatar_url' [alt]='userData?.name'
+                                class='rounded-full h-40 w-40 object-cover shadow-xl' />
+                        </div>
+                        <div class='text-center'>
+                            <p class='text-lg text-gray-600'>{{userData?.location}} 🇮🇳</p>
+                            <h1 class='text-3xl p-3 font-bold text-gray-800'>
+                                {{userData?.name}}
+                            </h1>
+                            <a href='https://github.com/BasavarajHirur' target='_blank'
+                                class='text-lg text-gray-600 flex justify-center items-center p-1 gap-2'>
+                                <i class="fa-brands fa-github"></i>@{{userData?.login}}
+                            </a>
+                            <a href='https://twitter.com/BasavarajHirur' target='_blank'
+                                class='text-lg text-gray-600 flex justify-center items-center p-1 gap-2'>
+                                <i class="fa-brands fa-twitter text-blue-400"></i>
+                                @{{userData?.twitter_username}}
+                            </a>
+                            <a href='https://www.linkedin.com/in/BasavarajaHiruru/'
+                                class='text-lg text-gray-600 flex justify-center items-center p-1 gap-2'>
+                                <i class="fa-brands fa-linkedin text-blue-600"></i>
+                                @BasavarajaHiruru
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</ng-template>

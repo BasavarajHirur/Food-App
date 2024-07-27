@@ -20,7 +20,6 @@ export class AboutComponent implements OnInit {
   getUserData() {
     this.store.select(selectUserData).subscribe(
       res => {
-        console.log(res);
         this.userData = res;
       }
     )
