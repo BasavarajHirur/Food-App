@@ -1,4 +1,4 @@
-<ng-container *ngIf="!menuCards.length; else elseBlock">
+<ng-container *ngIf="!(menuCards$ | async); else elseBlock">
     <app-what-is-on-your-mind-shimmer />
 </ng-container>
 <ng-template #elseBlock>
@@ -9,7 +9,7 @@
 
         <div class='overflow-x-auto hide-scrollbar container-carousel'>
             <div class='flex gap-3 transition-transform duration-500' style='transform: translateX(-0.1%)'>
-                <ng-container *ngFor="let item of menuCards">
+                <ng-container *ngFor="let item of menuCards$ | async">
                     <div class='flex-shrink-0 cursor-pointer'>
                         <img [src]="WHAT_IS_IN_YOUR_MIND + item.imageId" alt='food' class='w-36 h-44' />
                     </div>

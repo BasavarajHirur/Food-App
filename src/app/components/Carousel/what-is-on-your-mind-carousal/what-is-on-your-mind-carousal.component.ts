@@ -10,15 +10,11 @@ import { selectMenuCardData } from 'src/app/store/common.selector';
 })
 export class WhatIsOnYourMindCarousalComponent {
 
-  public menuCards: any;
+  public menuCards$: any = [];
   public WHAT_IS_IN_YOUR_MIND = WHAT_IS_IN_YOUR_MIND;
 
   constructor(private store: Store) {
-    this.store.select(selectMenuCardData).subscribe(
-      res => {
-        this.menuCards = res;
-      }
-    )
+    this.menuCards$ = this.store.select(selectMenuCardData);
   }
 
 }

@@ -8,13 +8,9 @@ import { selectTopRatedRestData } from 'src/app/store/common.selector';
   styleUrls: ['./top-restaurant-carousal.component.scss']
 })
 export class TopRestaurantCarousalComponent {
-  public topRestaurants: any;
+  public topRestaurants$: any;
 
   constructor(private store: Store) {
-    this.store.select(selectTopRatedRestData).subscribe(
-      res => {
-        this.topRestaurants = res;
-      }
-    )
+    this.topRestaurants$ = this.store.select(selectTopRatedRestData);
   }
 }

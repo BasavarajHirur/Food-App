@@ -1,4 +1,4 @@
-<ng-container *ngIf="!listOfRestaurants.length ;else elseBlock">
+<ng-container *ngIf="!(listOfRestaurants$ | async) ;else elseBlock">
     <app-restaurant-menu-shimmer />
 </ng-container>
 <ng-template #elseBlock>
@@ -23,13 +23,13 @@
             </div>
         </div>
         <div class='flex gap-8 justify-center flex-wrap'>
-            <ng-container *ngFor="let list of listOfRestaurants">
+            <ng-container *ngFor="let list of listOfRestaurants$ | async">
                 <a [routerLink]="'/restaurants/'+ list?.info?.id">
                     <app-restaurant-menu-card [restauants]='list'></app-restaurant-menu-card>
                 </a>
             </ng-container>
         </div>
-        <div className='flex justify-center items-center' *ngIf="!listOfRestaurants">
+        <div className='flex justify-center items-center' *ngIf="!(listOfRestaurants$ | async)">
             <span className='px-4 py-2 text-lg font-semibold'>{{'No match found for'}} {{filter.value}}</span>
         </div>
     </div>

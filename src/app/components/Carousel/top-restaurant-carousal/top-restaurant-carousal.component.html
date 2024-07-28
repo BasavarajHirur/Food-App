@@ -1,4 +1,4 @@
-<ng-container *ngIf="!topRestaurants.length; else elseBlock">
+<ng-container *ngIf="!(topRestaurants$ | async); else elseBlock">
     <app-top-restaurant-shimmer></app-top-restaurant-shimmer>
 </ng-container>
 <ng-template #elseBlock>
@@ -10,7 +10,7 @@
         </div>
         <div class='overflow-x-auto hide-scrollbar container-carousel'>
             <div class='flex gap-8 pl-4 transition-transform duration-500' style="transform: translateX(-0.1%)">
-                <ng-container *ngFor="let restaurant of topRestaurants">
+                <ng-container *ngFor="let restaurant of topRestaurants$ | async">
                     <a [routerLink]="['/restaurants', restaurant?.info?.id]">
                         <app-top-restaurant [topRestaurant]="restaurant" top="2"></app-top-restaurant>
                     </a>

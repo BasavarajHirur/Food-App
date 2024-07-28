@@ -10,16 +10,12 @@ import { selectListOfResto } from 'src/app/store/common.selector';
 })
 export class RestaurantMenuComponent implements OnInit {
 
-  public listOfRestaurants: any[] = [];
+  public listOfRestaurants$: any;
 
   constructor(private store: Store) { }
 
   ngOnInit(): void {
-    this.store.select(selectListOfResto).subscribe(
-      res => {
-        this.listOfRestaurants = res;
-      }
-    )
+    this.listOfRestaurants$ = this.store.select(selectListOfResto);
   }
 
   topRated() {
