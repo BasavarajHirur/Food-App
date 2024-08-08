@@ -6,6 +6,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { SearchComponent } from './pages/search/search.component';
 import { RestaurantMenuDetailsComponent } from './components/restaurant/restaurant-menu-details/restaurant-menu-details.component';
 import { AppComponent } from './app.component';
+import { CheckOutComponent, PaymentComponent } from './pages';
 
 const routes: Route[] = [
   {
@@ -31,6 +32,12 @@ const routes: Route[] = [
         component: RestaurantMenuDetailsComponent,
       },
     ],
+  },
+  {
+    path: 'checkout', component: CheckOutComponent,
+  },
+  {
+    path: 'payment', component: PaymentComponent,
   },
   {
     path: '**', redirectTo: '', pathMatch: 'full'

@@ -1,0 +1,83 @@
+<app-non-common-header />
+<div class="relative z-0 top-20" style="background:#e9ecee; height: 100%;"
+    *ngIf="!cartItem.length; else elseBlock">
+    <app-check-out-shimmer></app-check-out-shimmer>
+</div>
+<ng-template #elseBlock>
+    <div class='relative z-0 top-20' style="background:#e9ecee; height: 100%;">
+        <div class='flex gap-[30px] justify-between h-100'>
+            <div class="w-[100%] ml-14 relative">
+                <div class="bg-white py-7 px-7 w-[100%] mb-5 mt-8 relative">
+                    <div class="checkout-login">
+                        <h1 class='font-bold leading-snug'>Account</h1>
+                        <span class="rounded-md text-sm font-[400] text-[#7e808c]">
+                            To place your order now, log in to your existing account or sign up.
+                        </span>
+                        <div class='flex gap-3 mt-5' *ngIf="signType === ''">
+                            <button class='flex flex-col py-2 px-6 text-green-600 shadow-lg hover:shadow-md border'
+                                (click)="signType = 'logIn'">
+                                <p class="mx-auto text-sm">Have an account ?</p>
+                                <span class="font-semibold mx-auto">LOG IN</span>
+                            </button>
+                            <button
+                                class='flex flex-col py-2 px-6 shadow-lg hover:shadow-md bg-green-500 text-white border'
+                                (click)="signType = 'signUp'">
+                                <p class="mx-auto text-sm">New to Swiggy ?</p>
+                                <span class="font-semibold mx-auto">SIGN UP</span>
+                            </button>
+                        </div>
+                        <div class="w-[50%] mt-7">
+                            <ng-container *ngIf="signType === 'logIn'">
+                                <span>
+                                    Enter login details or
+                                    <span class="font-semibold text-orange-600 hover:text-orange-500 cursor-pointer"
+                                        (click)="signType = 'signUp'">
+                                        create an account
+                                    </span>
+                                </span>
+                                <app-log-in></app-log-in>
+                            </ng-container>
+                            <ng-container *ngIf="signType === 'signUp'">
+                                <span>
+                                    Sign up or
+                                    <span class="font-semibold text-orange-600 hover:text-orange-500 cursor-pointer"
+                                        (click)="signType = 'logIn'">
+                                        login to your account
+                                    </span>
+                                </span>
+                                <app-sign-up></app-sign-up>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <img class="absolute top-5 right-5" src="/assets/img/checkout.avif" alt="swiggy-logo"
+                        loading="lazy">
+                    <span class="login">
+                        <i class="fa-sharp fa-regular fa-user" style="color:white"></i>
+                    </span>
+                    <div class="line"></div>
+                </div>
+                <div class="bg-white py-7 px-7 w-[100%] mb-5 relative">
+                    <span class="font-semibold">Delivery address</span>
+                    <span class="address">
+                        <i class="fa-solid fa-location-dot" style="color:white"></i>
+                    </span>
+                    <div class="line"></div>
+                </div>
+                <div class="bg-white py-7 px-7 w-[100%]  mb-5 relative">
+                    <span class="font-semibold">Payment</span>
+                    <span class="payment">
+                        <i class="fa-duotone fa-solid fa-credit-card" style="color:white"></i>
+                    </span>
+                </div>
+            </div>
+            <div class='w-[600px] mr-8 mt-6 mb-5'>
+                <div class="bg-white mb-4">
+                    <app-checkout-cart [cartItem]="cartItem" />
+                </div>
+                <div class="bg-white">
+                    <app-cancel-policy />
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

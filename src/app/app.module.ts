@@ -6,42 +6,26 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
-import { commonReducer } from './store/common.reducers';
-import { CommonEffect } from './store/common.effects';
-import { AboutComponent } from './pages/about/about.component';
-import { CartComponent } from './pages/cart/cart.component';
-import { ContactComponent } from './pages/contact/contact.component';
-import { RestaurantMenuComponent } from './components/restaurant/restaurant-menu/restaurant-menu.component';
-import { RestaurantMenuDetailsComponent } from './components/restaurant/restaurant-menu-details/restaurant-menu-details.component';
-import { TopRestaurantCarousalComponent } from './components/Carousel/top-restaurant-carousal/top-restaurant-carousal.component';
-import { WhatIsOnYourMindCarousalComponent } from './components/Carousel/what-is-on-your-mind-carousal/what-is-on-your-mind-carousal.component';
-import { SearchComponent } from './pages/search/search.component';
-import { HeaderComponent } from './pages/header/header.component';
-import { HomeComponent } from './pages/home/home.component';
-import { ErrorComponent } from './pages/error/error.component';
-import { TopRestaurantComponent } from './components/restaurant/top-restaurant/top-restaurant.component';
-import { RestaurantMenuCardComponent } from './components/restaurant/restaurant-menu-card/restaurant-menu-card.component';
 import { RestaurantDetailsEffect, RestaurantDetailsReducer } from './store/restaurantDetails';
 import { DisplayCouponComponent } from './components/display-coupon/display-coupon.component';
-import { MenuCarouselComponent } from './components/Carousel/menu-carousel/menu-carousel.component';
-import { CategoryAccordianComponent } from './components/accordian/category-accordian/category-accordian.component';
-import { AccordianListComponent } from './components/accordian/accordian-list/accordian-list.component';
-import { NestedAccordianCategoryComponent } from './components/accordian/nested-accordian-category/nested-accordian-category.component';
-import { CartDetailsReducer } from './store/cartDetails/cart.reducer';
-import { CartDetailsEffect } from './store/cartDetails/cart.effects';
-import { CartItemsComponent } from './components/cart/cart-items/cart-items.component';
-import { CartSummaryComponent } from './components/cart/cart-summary/cart-summary.component';
-import { AboutShimmerComponent } from './components/shimmers/about-shimmer/about-shimmer.component';
-import { TopRestaurantShimmerComponent } from './components/shimmers/top-restaurant-shimmer/top-restaurant-shimmer.component';
-import { MenuCardShimmerComponent } from './components/shimmers/restaurant-menu-shimmer/restaurant-menu-shimmer.component';
-import { SingleMenuCardShimmerComponent } from './components/shimmers/single-menu-card-shimmer/single-menu-card-shimmer.component';
-import { SingleTopRestaurantCardShimmerComponent } from './components/shimmers/single-top-restaurant-card-shimmer/single-top-restaurant-card-shimmer.component';
-import { RestaurantMenuDetailsShimmerComponent } from './components/shimmers/restaurant-menu-details-shimmer/restaurant-menu-details-shimmer.component';
-import { WhatIsOnYourMindShimmerComponent } from './components/shimmers/what-is-on-your-mind-shimmer/what-is-on-your-mind-shimmer.component';
+import { MenuCarouselComponent, TopRestaurantCarousalComponent, WhatIsOnYourMindCarousalComponent } from './components/carousel';
+import { AccordianListComponent, CategoryAccordianComponent, NestedAccordianCategoryComponent } from './components/accordian';
+import { CartItemsComponent, CartSummaryComponent } from './components/cart';
+import { RestaurantMenuCardComponent, RestaurantMenuComponent, RestaurantMenuDetailsComponent, TopRestaurantComponent } from './components/restaurant';
+import { AboutShimmerComponent, MenuCardShimmerComponent, RestaurantMenuDetailsShimmerComponent, SingleMenuCardShimmerComponent, SingleTopRestaurantCardShimmerComponent, TopRestaurantShimmerComponent, WhatIsOnYourMindShimmerComponent } from './components/shimmers';
+import { CommonEffect, commonReducer } from './store';
+import { CartDetailsEffect, CartDetailsReducer } from './store/cartDetails';
+import { AboutComponent, CartComponent, CheckOutComponent, ContactComponent, ErrorComponent, HeaderComponent, HomeComponent, LogInComponent, PaymentComponent, SearchComponent } from './pages';
+import { NonCommonHeaderComponent } from './pages/header/non-common-header/non-common-header.component';
+import { CheckOutShimmerComponent } from './components/shimmers/check-out-shimmer/check-out-shimmer.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
+import { SignUpComponent } from './components/user-form/sign-up/sign-up.component';
+import { CancelPolicyComponent, CheckoutCartComponent } from './components/check-out';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
     AboutComponent,
     CartComponent,
     ContactComponent,
@@ -68,7 +52,16 @@ import { WhatIsOnYourMindShimmerComponent } from './components/shimmers/what-is-
     SingleMenuCardShimmerComponent,
     SingleTopRestaurantCardShimmerComponent,
     RestaurantMenuDetailsShimmerComponent,
-    WhatIsOnYourMindShimmerComponent
+    WhatIsOnYourMindShimmerComponent,
+    CheckOutComponent,
+    PaymentComponent,
+    LogInComponent,
+    NonCommonHeaderComponent,
+    CheckoutCartComponent,
+    CheckOutShimmerComponent,
+    UserFormComponent,
+    SignUpComponent,
+    CancelPolicyComponent
   ],
   imports: [
     BrowserModule,

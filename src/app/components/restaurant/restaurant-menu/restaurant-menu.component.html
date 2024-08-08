@@ -29,8 +29,8 @@
                 </a>
             </ng-container>
         </div>
-        <div className='flex justify-center items-center' *ngIf="!(listOfRestaurants$ | async)">
-            <span className='px-4 py-2 text-lg font-semibold'>{{'No match found for'}} {{filter.value}}</span>
+        <div class='flex justify-center items-center' *ngIf="!(listOfRestaurants$ | async)">
+            <span class='px-4 py-2 text-lg font-semibold'>{{'No match found for'}} {{filter.value}}</span>
         </div>
     </div>
 </ng-template>

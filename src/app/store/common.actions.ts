@@ -12,6 +12,9 @@ const GET_TOP_RATED_REST_DATA = '[common effects] get top rated restaturant menu
 const TOP_RATED_RESTAURANTS = '[common effects] get top rated restaturants';
 const FILTER_TOP_RATED_RESTAURANTS = '[common effects] get filtered top rated restaturants';
 
+const HANDLE_LOGIN = '[common action] open/close login form';
+const LOGIN_DETAILS = '[common action] login';
+
 export const Store_User_data = createAction(
     STORE_USER_DATA
 )
@@ -54,4 +57,14 @@ export const Top_rated_restaurant = createAction(
 export const Filter_Top_rated_restaurant = createAction(
     FILTER_TOP_RATED_RESTAURANTS,
     props<{ filteredValue: any }>()
+)
+
+export const Handle_Login = createAction(
+    HANDLE_LOGIN,
+    props<{ isOpen: boolean }>()
+)
+
+export const Set_Login_Details = createAction(
+    LOGIN_DETAILS,
+    props<{ user_details: any }>()
 )

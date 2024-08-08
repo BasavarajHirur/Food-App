@@ -1,0 +1,88 @@
+<app-non-common-header />
+<div class="relative z-0 top-20" style="background:#e9ecee; height: 100%;" *ngIf="''; else elseBlock">
+    <app-check-out-shimmer></app-check-out-shimmer>
+</div>
+<ng-template #elseBlock>
+    <div class='relative w-2/3 ml-auto mr-auto top-20 h-100'>
+        <div class="flex items-center py-7 mt-7 font-bold">
+            <i class="fa-solid fa-arrow-left text-gray-500"></i>
+            <div class="ml-2">
+                <p class="font-bold">Payment Options</p>
+                <p class="text-gray-500 text-xs">{{cartItem.length}} item * Total  ₹{{(calculateGrandTotal(cartItem) - calculateGrandTotal(cartItem) *
+                    0.1).toFixed(2)}}{{' '}}</p>
+            </div>
+        </div>
+        <div class='overflow-y-scroll' style="background:#e9ecee; height: 60vh;">
+            <div class="bg-white font-bold text-xs py-4 px-10 mb-2 relative">
+                <p class='mb-1'>
+                    <span class="inline-block h-[12px] w-[12px] mr-2 border-4 border-blue-600 rounded-full"></span>
+                    {{restaurantDetails?.name || restaurantDetails?.cards?.[0]?.card?.card?.text}}
+                    | <span class="text-gray-500">Delivery in: 30 mins</span>
+                </p>
+                <p>
+                    <span class="inline-block h-[12px] w-[12px] mr-2 border-4 border-blue-600 rounded-full"></span>
+                    Other | <span class="text-gray-500"></span>
+                </p>
+                <span class="absolute z-0 top-7 left-11 h-[10px] border-l-4 border-blue-600"></span>
+            </div>
+            <div class="w-[90%] mr-auto ml-auto">
+                <h1 class="mt-4 mb-2 font-bold">Preferred Payment</h1>
+                <div class="bg-white flex items-center rounded-lg py-10 px-4 h-[50px] mb-4 mt-1">
+                    <img src="/assets/img/phonepe.png"
+                        class='text-orange-500 hover:scale-110 cursor-pointer transition-transform duration-300 ease-in-out h-5 w-5'
+                        alt="swiggy-logo" loading="lazy">
+                    <span class="font-semibold ml-3">PhonePe(Wallet/ UPI / Cards)</span>
+                </div>
+                <h1 class="font-semibold">Pay by any UPI App</h1>
+                <div class="bg-white flex items-center rounded-lg py-10 px-4 h-[50px] mb-4 mt-1">
+                    <span
+                        class="text-orange-700 flex items-center font-bold border-[0.5px] border-gray rounded-md px-2">+</span>
+                    <p class="flex flex-col ml-2 leading-5">
+                        <span class="text-orange-500 font-bold">Add New UPI ID</span>
+                        <span class="text-gray-500">You need to have registered UPI ID</span>
+                    </p>
+                </div>
+                <h1 class="font-semibold">Credit & Debit Cards</h1>
+                <div class="bg-white flex items-center rounded-lg py-10 px-4 h-[50px] mb-4 mt-1">
+                    <span
+                        class="text-orange-700 flex items-center font-bold border-[0.5px] border-gray rounded-md px-2">+</span>
+                    <p class="flex flex-col ml-2 leading-5">
+                        <span class="text-orange-500 font-bold">Add New Card</span>
+                        <span class="text-gray-500">Save and Pay via Cards</span>
+                    </p>
+                </div>
+                <h1 class="font-semibold">More Payment Options</h1>
+                <div class="bg-white rounded-lg mt-1 mb-4">
+                    <div class="flex items-center py-10 px-4 h-[50px]  border-b-2 border-gray-200 border-dotted">
+                        <i class="fa-solid fa-wallet border-[0.5px] border-gray p-2 rounded-md"></i>
+                        <p class="flex flex-col ml-2 leading-5">
+                            <span class="font-semibold">Wallets</span>
+                            <span class="text-gray-500">Paytm, PhonePe, Amazon Pay & more</span>
+                        </p>
+                    </div>
+                    <div class="flex items-center py-10 px-4 h-[50px] border-b-2 border-gray-200 border-dotted">
+                        <i class="fa-regular fa-credit-card border-[0.5px] border-gray p-2 rounded-md"></i>
+                        <p class=" flex flex-col ml-2 leading-5">
+                            <span class="font-semibold">Pluxee</span>
+                            <span class="text-gray-500">Pluxee card valid only on Food & Instamart</span>
+                        </p>
+                    </div>
+                    <div class="flex items-center py-10 px-4 h-[50px] border-b-2 border-gray-200 border-dotted">
+                        <i class="fa-solid fa-building-columns border-[0.5px] border-gray p-2 rounded-md"></i>
+                        <p class=" flex flex-col ml-2 leading-5">
+                            <span class="font-semibold">Netbanking</span>
+                            <span class="text-gray-500">Select from a list of banks</span>
+                        </p>
+                    </div>
+                    <div class="flex items-center py-10 px-4 h-[50px]">
+                        <i class="fa-solid fa-money-bill-1-wave border-[0.5px] border-gray p-2 rounded-md"></i>
+                        <p class=" flex flex-col ml-2 leading-5">
+                            <span class="font-semibold">Pay on Delivery</span>
+                            <span class="text-gray-500">Pay in cash or pay online.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Clear_cart, Show_cart } from 'src/app/store/cartDetails/cart.actions';
 import { selectCartDetails } from 'src/app/store/cartDetails/cart.selectors';
@@ -12,7 +13,7 @@ export class CartComponent implements OnInit {
   public items: any;
   public cartItem: any;
 
-  constructor(private store: Store) { }
+  constructor(private store: Store, private router: Router) { }
 
   ngOnInit(): void {
     this.cartDetails();
@@ -33,6 +34,10 @@ export class CartComponent implements OnInit {
 
   handleClearCart() {
     this.store.dispatch(Clear_cart());
+  }
+
+  checkout() {
+    this.router.navigate(['/checkout']);
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Handle_Login, selectUserDetails } from 'src/app/store';
 import { Show_cart } from 'src/app/store/cartDetails/cart.actions';
 import { selectCartDetails, selectShowCart } from 'src/app/store/cartDetails/cart.selectors';
 
@@ -13,10 +14,12 @@ export class HeaderComponent implements OnInit {
   public cart: any = [];
   public toggle = false;
   public viewCart = false;
+  public isLoggedIn$: any;
 
   constructor(private store: Store) { }
 
   ngOnInit(): void {
+    this.getUserDetails
     this.showCart();
     this.cartDetails();
   }
@@ -40,5 +43,13 @@ export class HeaderComponent implements OnInit {
 
   handleShowCart() {
     this.store.dispatch(Show_cart());
+  }
+
+  getUserDetails() {
+    this.isLoggedIn$ = this.store.select(selectUserDetails);
+  }
+
+  logIn() {
+    this.store.dispatch(Handle_Login({ isOpen: true }));
   }
 }

@@ -1,2 +1,6 @@
-<app-header></app-header>
+<div id="modal" class="fixed top-0 z-30 w-[100vw] h-[100vh] bg-[rgba(0,0,0,0.5)] hidden" (click)="closeLogIn()">
+</div>
+<div id="login-form" class="fixed right-0 top-0 z-40 w-[0px]" style="background:#e9ecee; height: 100vh;">
+    <app-user-form></app-user-form>
+</div>
 <router-outlet></router-outlet>

@@ -1,0 +1,67 @@
+<div class='mt-2 mx-5 pt-4'>
+    <a [routerLink]="'/restaurants/'+ restaurantDetails?.id" class="flex gap-5 ">
+        <img [src]="CLOUDINARY_CDN_URL + restaurantDetails?.cloudinaryImageId" alt='resImage'
+            class='h-[60px] object-fit w-[60px] shadow rounded-2xl border' />
+        <div class='flex flex-col gap-0.5'>
+            <h1 class='font-bold font-medium text-base'>
+                {{restaurantDetails?.name || restaurantDetails?.cards?.[0]?.card?.card?.text}}
+            </h1>
+            <span>{{restaurantDetails?.city}}</span>
+        </div>
+    </a>
+</div>
+<ng-container *ngFor="let item of cartItem">
+    <div class='flex gap-5 border-b mt-2 py-3 px-5'>
+        <div class='w-3/4'>
+            <h1 class='font-semibold text-base'>
+                {{item?.quantity}} X {{item?.card?.info?.name}}
+            </h1>
+            <p class='font-medium text-base pb-2'>
+                ₹
+                {{ (item?.card?.info?.defaultPrice / 100) * item?.quantity.toFixed(2) ||
+                (item?.card?.info?.price / 100) * item?.quantity.toFixed(2) }}{{' '}}
+                <span class='text-slate-500 font-light text-sm'>
+                    (
+                    {{(item?.card?.info?.defaultPrice / 100) ||(item?.card?.info?.price / 100)}}{{' '}}
+                    X {{item?.quantity}})
+                </span>
+            </p>
+        </div>
+        <div class=' w-full flex justify-between'>
+            <span class='bg-white flex justify-between items-center gap-3 font-bold text-base py-1 mr-4'>
+                <button (click)="handleRemoveSingleItem(item)"
+                    class='text-white bg-orange-500 hover:bg-orange-400 font-semibold text-xl py-0.5 px-3 rounded-md '>
+                    -
+                </button>
+                {{item?.quantity}}
+                <button (click)="handleAddItem(item)"
+                    class='text-white bg-orange-500 hover:bg-orange-400 font-semibold text-xl py-0.5 px-3 rounded-md '>
+                    +
+                </button>
+            </span>
+        </div>
+    </div>
+</ng-container>
+<div class="summary">
+    <div class='flex justify-between pt-2 mt-2 px-4 font-semibold'>
+        <span>Grand Total</span>
+        <span>₹{{calculateGrandTotal(cartItem).toFixed(2)}}</span>
+    </div>
+    <div class='flex justify-between px-4 font-semibold'>
+        <span>Discount (FLAT 10% OFF)</span>
+        <span>- ₹ {{(calculateGrandTotal(cartItem) * 0.1).toFixed(2)}}</span>
+    </div>
+    <div class='flex justify-between px-4 font-semibold mb-10'>
+        <span>Delivery Charge</span>{{' '}}
+        <span class='text-white bg-green-600 px-2 rounded-md'>
+            FREE
+        </span>
+    </div>
+    <div class="w-[90%] ml-auto mr-auto mb-2 border-t border-t-7 border-black"></div>
+    <div class='flex justify-between px-4 font-semibold pb-4'>
+        <span>TO PAY</span>
+        <span>
+            ₹{{(calculateGrandTotal(cartItem) - calculateGrandTotal(cartItem) * 0.1).toFixed(2)}}{{' '}}
+        </span>
+    </div>
+</div>

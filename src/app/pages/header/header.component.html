@@ -24,8 +24,8 @@
             </span>{{' '}}
             <span> Cart</span>
         </span>
-        <span class='cursor-pointer w-[51px] hover:text-orange-500' (click)="toggle != toggle">
-            {{toggle ? 'Login' : 'Logout'}}
+        <span class='cursor-pointer w-[51px] hover:text-orange-500' (click)="logIn()">
+            {{(isLoggedIn$ | async) ? 'Login' : 'Logout'}}
         </span>
         <div *ngIf="viewCart" class='fixed border h-screen bg-white top-0 right-0 z-50'>
             <app-cart></app-cart>

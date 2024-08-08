@@ -22,3 +22,13 @@ export const selectListOfResto = createSelector(
     selectState,
     (state: InitialState) => state?.filteredRestaurants
 )
+
+export const selectLogInFormStatus = createSelector(
+    selectState,
+    (state: InitialState) => state?.logInFormStatus
+)
+
+export const selectUserDetails = createSelector(
+    selectState,
+    (state: InitialState) => state?.isLoggedIn
+)

@@ -8,6 +8,7 @@ import { Store_Restaurant_data } from 'src/app/store/common.actions';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  public isOpen = false;
   constructor(private store: Store) { }
 
   ngOnInit(): void {

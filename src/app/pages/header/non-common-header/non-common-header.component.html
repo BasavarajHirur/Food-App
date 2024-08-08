@@ -1,0 +1,15 @@
+<div class='flex fixed z-10 w-full h-20 justify-between py-4 boxShadow bg-white'>
+    <div class="flex justify-center items-center mx-7">
+        <a routerLink='/'>
+            <img src="/assets/img/Swiggy1.png"
+                class='text-orange-500 hover:scale-110 h-[50px] w-[100px] cursor-pointer transition-transform duration-300 ease-in-out'
+                alt="swiggy-logo" loading="lazy">
+        </a>
+        <span class='font-bold text-orange-500'>SECURE {{headerName}}</span>
+    </div>
+    <div class='flex items-center gap-12 mx-32'>
+        <span class='cursor-pointer w-[51px] hover:text-orange-500' (click)="toggle != toggle">
+            {{toggle ? 'Login' : 'Logout'}}
+        </span>
+    </div>
+</div>

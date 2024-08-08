@@ -1,11 +1,13 @@
 import { createReducer, on } from "@ngrx/store"
-import { Filter_Top_rated_restaurant, Get_Restaurant_data, Get_User_data, Top_rated_restaurant } from "./common.actions"
+import { Filter_Top_rated_restaurant, Get_Restaurant_data, Get_User_data, Handle_Login, Set_Login_Details, Top_rated_restaurant } from "./common.actions"
 
 export interface InitialState {
     userData: any,
     RestaurantData: any,
     topRestaurants: any,
     filteredRestaurants: any,
+    logInFormStatus: boolean,
+    isLoggedIn: boolean,
     error: any
 }
 
@@ -14,6 +16,8 @@ export const initialState: InitialState = {
     RestaurantData: null,
     topRestaurants: null,
     filteredRestaurants: null,
+    logInFormStatus: false,
+    isLoggedIn: false,
     error: null
 }
 
@@ -62,4 +66,12 @@ export const commonReducer = createReducer(
             }
         }
     ),
+    on(
+        Handle_Login,
+        (state, { isOpen }) => ({ ...state, logInFormStatus: isOpen, error: null })
+    ),
+    on(
+        Set_Login_Details,
+        (state, { user_details }) => ({ ...state, isLoggedIn: true, error: null })
+    )
 )

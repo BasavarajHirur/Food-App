@@ -1,0 +1,24 @@
+<div id="login-form" class="relative">
+    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+        <div class="flex justify-center align-center sm:mx-auto sm:w-full sm:max-w-sm">
+            <div class="w-2/3">
+                <h2 class="text-2xl font-bold leading-9 tracking-tight text-gray-900">
+                    {{login ? 'Log In': 'Sign Up'}}
+                </h2>
+                <p>or
+                    <span class="font-semibold text-orange-600 hover:text-orange-500 cursor-pointer"
+                        (click)="login = !login">
+                        {{login ? 'create an account' : 'login to your account' }}</span>
+                </p>
+            </div>
+            <img class="w-auto h-20" src="/assets/img/checkout.avif" alt="Your Company">
+        </div>
+        <div *ngIf="login; else elseBlock">
+            <app-log-in></app-log-in>
+        </div>
+        <ng-template #elseBlock>
+            <app-sign-up></app-sign-up>
+        </ng-template>
+    </div>
+    <i class="fa-solid fa-xmark cursor-pointer absolute top-4 left-4" (click)="close()"></i>
+</div>
